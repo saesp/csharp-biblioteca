@@ -28,6 +28,11 @@
 //USERS
 
 //registration
+using System.ComponentModel;
+
+Console.WriteLine("Registrati");
+
+
 Console.WriteLine("Nome:");
 string _firstName = Console.ReadLine();
 
@@ -44,8 +49,8 @@ Console.WriteLine("Numero cellulare:");
 string _phone = Console.ReadLine();
 
 
-
-List<string> userFirstname = new List<string>();
+//add in array
+List<string> userFirstname = new List<string> ();
 userFirstname.Add(_firstName);
 
 List<string> userLastname = new List<string>();
@@ -59,6 +64,47 @@ passwordUser.Add(_password);
 
 List<string> phoneUser = new List<string>();
 phoneUser.Add(_phone);
+
+
+
+//login
+Console.WriteLine("Accedi");
+
+
+Console.WriteLine("Tua email:");
+string emailLogin = Console.ReadLine();
+
+Console.WriteLine("Tua password:");
+string passwordLogin = Console.ReadLine();
+
+
+if (emailLogin == _email && passwordLogin == _password)
+    Console.WriteLine("Dati corretti");
+else
+    Console.WriteLine("Dati errati");
+
+
+
+////array
+//List<User> users = new List<User>(); 
+
+//class User{
+//    string firstName;
+//    string lastName;
+//    string email;
+//    string password;
+//    string phone;
+
+//    public User(string firstName, string lastName, string email, string password, string phone)
+//    {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.password = password; 
+//        this.phone = phone;
+//    }
+//}
+
 
 
 namespace library
