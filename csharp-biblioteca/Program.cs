@@ -1,8 +1,8 @@
 ﻿//Si vuole progettare un sistema per la gestione di una biblioteca.
 
 //Gli utenti si possono registrare al sistema, fornendo:
-//cognome
 //nome
+//cognome
 //email
 //password
 //recapito telefonico
@@ -25,6 +25,42 @@
 //Creiamo anche una classe Biblioteca che contiene la lista dei documenti, la lista degli utenti e la lista dei prestiti. Contiene inoltre i metodi per le ricerche e per l’aggiunta dei documenti, utenti e prestiti.
 
 
+//USERS
+
+//registration
+Console.WriteLine("Nome:");
+string _firstName = Console.ReadLine();
+
+Console.WriteLine("Cognome:");
+string _lastName = Console.ReadLine();
+
+Console.WriteLine("Email:");
+string _email = Console.ReadLine();
+
+Console.WriteLine("Password:");
+string _password = Console.ReadLine();
+
+Console.WriteLine("Numero cellulare:");
+string _phone = Console.ReadLine();
+
+
+
+List<string> userFirstname = new List<string>();
+userFirstname.Add(_firstName);
+
+List<string> userLastname = new List<string>();
+userLastname.Add(_lastName);
+
+List<string> emailUser = new List<string>();
+emailUser.Add(_email);
+
+List<string> passwordUser = new List<string>();
+passwordUser.Add(_password);
+
+List<string> phoneUser = new List<string>();
+phoneUser.Add(_phone);
+
+
 namespace library
 {
     //superclasse
@@ -39,7 +75,7 @@ namespace library
         public string Author { get; set; }
     }
 
-    //classe figlia di Documents
+    //classi figlie di Documents
     class Books : Documents
     {
         public short PagesNumber { get; set; }
