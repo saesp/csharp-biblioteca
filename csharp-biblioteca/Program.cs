@@ -24,13 +24,33 @@
 
 //Creiamo anche una classe Biblioteca che contiene la lista dei documenti, la lista degli utenti e la lista dei prestiti. Contiene inoltre i metodi per le ricerche e per l’aggiunta dei documenti, utenti e prestiti.
 
+//users
+User user = new User();
+User user2 = new User();
+User user3 = new User();
 
-//USERS
+user.Firstname = "Salvatore";
+user.Lastname = "Espsosito";
+user.Email = "sa@live.it";
+user.Password = "1234";
+user.Phone = "331";
 
-//registration
-using System.ComponentModel;
+user2.Firstname = "Thomas";
+user2.Lastname = "Rossi";
+user2.Email = "to@live.it";
+user2.Password = "1234";
+user2.Phone = "332";
 
-Console.WriteLine("Registrati");
+user3.Firstname = "Giada";
+user3.Lastname = "Bianchi";
+user3.Email = "gi@live.it";
+user3.Password = "2345";
+user3.Phone = "334";
+
+
+
+//REGISTRATION
+Console.WriteLine("REGISTRATI");
 
 
 Console.WriteLine("Nome:");
@@ -49,26 +69,26 @@ Console.WriteLine("Numero cellulare:");
 string _phone = Console.ReadLine();
 
 
-//add in array
-List<string> userFirstname = new List<string> ();
-userFirstname.Add(_firstName);
-
-List<string> userLastname = new List<string>();
-userLastname.Add(_lastName);
-
-List<string> emailUser = new List<string>();
-emailUser.Add(_email);
-
-List<string> passwordUser = new List<string>();
-passwordUser.Add(_password);
-
-List<string> phoneUser = new List<string>();
-phoneUser.Add(_phone);
+User user4 = new User();
+user3.Firstname = _firstName;
+user3.Lastname = _lastName;
+user3.Email = _email;
+user3.Password = _password;
+user3.Phone = _phone;
 
 
 
-//login
-Console.WriteLine("Accedi");
+//user list
+List<User> userList = new List<User>();
+userList.Add(user);
+userList.Add(user2);
+userList.Add(user3);
+userList.Add(user4);
+
+
+
+//LOGIN
+Console.WriteLine("ACCEDI");
 
 
 Console.WriteLine("Tua email:");
@@ -85,6 +105,13 @@ if (emailLogin != _email && passwordLogin != _password)
 else
 {
     Console.WriteLine("Dati corretti");
+
+
+    Console.WriteLine("DOCUMENTI DISPONIBILI");
+
+
+    Console.WriteLine("Dvd");
+
     Dvd dvd = new Dvd();
     dvd.Code = "1";
     dvd.Title = "title dvd 1";
@@ -104,6 +131,9 @@ else
     dvd2.Author = "W.A.";
     dvd2.Duration = 60;
     dvd2.WriteDocument();
+
+
+    Console.WriteLine("Libri");
 
     Book book = new Book();
     book.Code = "4";
@@ -129,8 +159,7 @@ else
 
 
 
-
-//superclasse
+//Super Class Document
 class Document
 {
     //attributi (private) + getter e setter
@@ -142,6 +171,7 @@ class Document
     public string Author { get; set; }
 
 
+    //methods
     public virtual void WriteDocument()
     {
         Console.WriteLine($"Code {Code}");
@@ -154,8 +184,8 @@ class Document
 }
 
 
-//classi figlie di Documents
-class Book : Documents
+//classi figlie di Document
+class Book : Document
 {
     public short PagesNumber { get; set; }
 
@@ -166,7 +196,7 @@ class Book : Documents
     }
 }
 
-class Dvd : Documents
+class Dvd : Document
 {
     public int Duration { get; set; }
 
@@ -177,32 +207,31 @@ class Dvd : Documents
     }
 }
 
-//users 
-class Document
+
+//Class User 
+class User
 {
     //attributi (private) + getter e setter
-    public string Code { get; set; }
-    public string Title { get; set; }
-    public string Year { get; set; }
-    public string Sector { get; set; }
-    public string Shelf { get; set; }
-    public string Author { get; set; }
+    public string Firstname { get; set; }
+    public string Lastname { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public string Phone { get; set; }
 
 
-    public virtual void WriteDocument()
+    public virtual void WriteUser()
     {
-        Console.WriteLine($"Code {Code}");
-        Console.WriteLine($"Title {Title}");
-        Console.WriteLine($"Year {Year}");
-        Console.WriteLine($"Sector {Sector}");
-        Console.WriteLine($"Shelf {Shelf}");
-        Console.WriteLine($"Author {Author}");
+        Console.WriteLine($"Firstname {Firstname}");
+        Console.WriteLine($"Lastname {Lastname}");
+        Console.WriteLine($"Email {Email}");
+        Console.WriteLine($"Password {Password}");
+        Console.WriteLine($"Phone {Phone}");
     }
 }
 class Library
 {
     //attributi (private) + getter e setter
-    public List<Documents> Documents;
+    public List<Document> Documents;
     //public List<Users> Users;
 
 }
