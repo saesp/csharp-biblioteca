@@ -78,62 +78,131 @@ Console.WriteLine("Tua password:");
 string passwordLogin = Console.ReadLine();
 
 
-if (emailLogin == _email && passwordLogin == _password)
-    Console.WriteLine("Dati corretti");
-else
-    Console.WriteLine("Dati errati");
-
-
-
-////array
-//List<User> users = new List<User>(); 
-
-//class User{
-//    string firstName;
-//    string lastName;
-//    string email;
-//    string password;
-//    string phone;
-
-//    public User(string firstName, string lastName, string email, string password, string phone)
-//    {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.email = email;
-//        this.password = password; 
-//        this.phone = phone;
-//    }
-//}
-
-
-
-namespace library
+if (emailLogin != _email && passwordLogin != _password)
 {
-    //superclasse
-    public class Documents
-    {
-        //attributi (private) + getter e setter
-        public string Code { get; set; }
-        public string Title { get; set; }
-        public string Year { get; set; }
-        public string Sector { get; set; }
-        public string Shelf { get; set; }
-        public string Author { get; set; }
-    }
+    Console.WriteLine("Dati errati");
+}
+else
+{
+    Console.WriteLine("Dati corretti");
+    Dvd dvd = new Dvd();
+    dvd.Code = "1";
+    dvd.Title = "title dvd 1";
+    dvd.Year = "2020";
+    dvd.Sector = "history";
+    dvd.Shelf = "A2";
+    dvd.Author = "R.M.";
+    dvd.Duration = 120;
+    dvd.WriteDocument();
 
-    //classi figlie di Documents
-    class Books : Documents
-    {
-        public short PagesNumber { get; set; }
-    }
+    Dvd dvd2 = new Dvd();
+    dvd2.Code = "14";
+    dvd2.Title = "title dvd 2";
+    dvd2.Year = "2000";
+    dvd2.Sector = "history";
+    dvd2.Shelf = "F3";
+    dvd2.Author = "W.A.";
+    dvd2.Duration = 60;
+    dvd2.WriteDocument();
 
-    class Dvd : Documents
-    {
-        public int Duration { get; set; }
-    }
+    Book book = new Book();
+    book.Code = "4";
+    book.Title = "title book 1";
+    book.Year = "2010";
+    book.Sector = "psychology";
+    book.Shelf = "B1";
+    book.Author = "E.J.";
+    book.PagesNumber = 1000;
+    book.WriteDocument();
+
+    Book book2 = new Book();
+    book2.Code = "8";
+    book2.Title = "title book 2";
+    book2.Year = "2015";
+    book2.Sector = "horror";
+    book2.Shelf = "B5";
+    book2.Author = "U.L.";
+    book2.PagesNumber = 500;
+    book2.WriteDocument();
 }
 
 
 
 
 
+//superclasse
+class Document
+{
+    //attributi (private) + getter e setter
+    public string Code { get; set; }
+    public string Title { get; set; }
+    public string Year { get; set; }
+    public string Sector { get; set; }
+    public string Shelf { get; set; }
+    public string Author { get; set; }
+
+
+    public virtual void WriteDocument()
+    {
+        Console.WriteLine($"Code {Code}");
+        Console.WriteLine($"Title {Title}");
+        Console.WriteLine($"Year {Year}");
+        Console.WriteLine($"Sector {Sector}");
+        Console.WriteLine($"Shelf {Shelf}");
+        Console.WriteLine($"Author {Author}");
+    }
+}
+
+
+//classi figlie di Documents
+class Book : Documents
+{
+    public short PagesNumber { get; set; }
+
+    public override void WriteDocument()
+    {
+        base.WriteDocument();
+        Console.WriteLine($"Pages number {PagesNumber}");
+    }
+}
+
+class Dvd : Documents
+{
+    public int Duration { get; set; }
+
+    public override void WriteDocument()
+    {
+        base.WriteDocument();
+        Console.WriteLine($"Duration {Duration}");
+    }
+}
+
+//users 
+class Document
+{
+    //attributi (private) + getter e setter
+    public string Code { get; set; }
+    public string Title { get; set; }
+    public string Year { get; set; }
+    public string Sector { get; set; }
+    public string Shelf { get; set; }
+    public string Author { get; set; }
+
+
+    public virtual void WriteDocument()
+    {
+        Console.WriteLine($"Code {Code}");
+        Console.WriteLine($"Title {Title}");
+        Console.WriteLine($"Year {Year}");
+        Console.WriteLine($"Sector {Sector}");
+        Console.WriteLine($"Shelf {Shelf}");
+        Console.WriteLine($"Author {Author}");
+    }
+}
+class Library
+{
+    //attributi (private) + getter e setter
+    public List<Documents> Documents;
+    //public List<Users> Users;
+
+}
